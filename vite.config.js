@@ -1,19 +1,28 @@
 
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { resolve } from "path";
+import { fileURLToPath } from "node:url";
+
+const entry = fileURLToPath(
+  new URL("./src/index.js", import.meta.url)
+);
 
 export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: resolve(__dirname, "src/index.js"),
+      entry,
       formats: ["es"],
       fileName: "index",
       cssFileName: "style",
     },
     rollupOptions: {
-      external: ["react", "react-dom", "react/jsx-runtime", "framer-motion"],
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "framer-motion",
+      ],
     },
   },
 });
