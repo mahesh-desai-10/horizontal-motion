@@ -1,0 +1,1 @@
+export { ScrollReveal as default, ScrollReveal } from "./ScrollReveal.jsx";
